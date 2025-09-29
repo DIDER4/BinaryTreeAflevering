@@ -83,7 +83,7 @@ public class BST<E> implements Tree<E> {
         return new TreeNode<>(e);
     }
 
-    //BinaryTrees opgave01-3
+    //BinaryTrees opgave01-3 - med public private kald
     @Override
     public void inorder() {
         inorder(root);
@@ -97,7 +97,7 @@ public class BST<E> implements Tree<E> {
     }
 
 
-    //BinaryTrees opgave01-3
+    //BinaryTrees opgave01-3 - med public private kald
     @Override
     public void postorder() {
         postorder(root);
@@ -111,7 +111,7 @@ public class BST<E> implements Tree<E> {
     }
 
 
-    //BinaryTrees opgave01-3
+    //BinaryTrees opgave01-3 - med public private kald
     @Override
     public void preorder() {
         preorder(root);
@@ -164,7 +164,7 @@ public class BST<E> implements Tree<E> {
         return node != null && (node.left != null || node.right != null);
     }
 
-    //BinaryTrees opgave02
+    //BinaryTrees opgave02 - med public private kald
     @Override
     public int height() {
         return height(root);
@@ -178,18 +178,23 @@ public class BST<E> implements Tree<E> {
     }
 
 
-    //BinaryTrees opgave03
+    //BinaryTrees opgave03 - med public private kald
     @Override
     public int sum() {
         return sum(root);
     }
 
     private int sum(TreeNode<E> node) {
-        if (node == null) return 0;
-        int left = sum(node.left);
-        int right = sum(node.right);
-        int val = (node.element instanceof Integer) ? (Integer) node.element : 0;
-        return left + val + right;
+        if (node == null) {
+            return 0;
+        }
+        int leftSum = sum(node.left);
+        int rightSum = sum(node.right);
+        int nodeValue = 0;
+        if (node.element instanceof Integer) {
+            nodeValue = (Integer) node.element;
+        }
+        return leftSum + nodeValue + rightSum;
     }
 
     //BinaryTrees opgave04 --
@@ -343,7 +348,7 @@ public class BST<E> implements Tree<E> {
         return found; // Element deleted successfully
     }
 
-    //BinaryTreesFortsat opgave 4
+    //BinaryTreesFortsat opgave 4 - med public private kald
     public int numberOfLeaves() {
         return numberOfLeaves(root);
     }
@@ -359,7 +364,7 @@ public class BST<E> implements Tree<E> {
         return numberOfLeaves(node.left) + numberOfLeaves(node.right);
     }
 
-    //BinaryTreesFortsat opgave 4
+    //BinaryTreesFortsat opgave 4 - med public private kald
     public int heightNodeCount(int targetHeight) {
         return heightNodeCount(root, 0, targetHeight);
     }

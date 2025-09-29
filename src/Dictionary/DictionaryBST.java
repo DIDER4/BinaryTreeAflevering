@@ -128,7 +128,7 @@ public class DictionaryBST<K extends Comparable<K>, V> implements Dictionary<K, 
 
         V valueToReturn = current.value;
 
-        // Tilfælde 1: Node har intet venstre barn
+        // 1. Mulighed: Node har intet venstre barn
         if (current.left == null) {
             if (parent == null) {
                 root = current.right;
@@ -140,7 +140,7 @@ public class DictionaryBST<K extends Comparable<K>, V> implements Dictionary<K, 
                 }
             }
         }
-        // Tilfælde 2: Node har et venstre barn
+        // 2. Mulighed: Node har et venstre barn
         else {
             // Find den største node i venstre subtree
             Node parentOfRightmost = current;

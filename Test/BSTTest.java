@@ -76,27 +76,27 @@ class BSTTest {
 
     @Test
     void testDelete() {
-        // Delete a leaf
+        // Slet et blad
         assertTrue(tree.delete(15));
         assertFalse(tree.search(15));
         assertEquals(8, tree.getSize());
 
-        // Delete node with one child
+        // Slet en node med tilhørende barn
         assertTrue(tree.delete(30));
         assertFalse(tree.search(30));
         assertEquals(7, tree.getSize());
 
-        // Delete node with two children
+        // Slet en node med 2 tilhørende børn
         assertTrue(tree.delete(22));
         assertFalse(tree.search(22));
         assertEquals(6, tree.getSize());
 
-        // Delete root
+        // Slet root
         assertTrue(tree.delete(45));
         assertFalse(tree.search(45));
         assertEquals(5, tree.getSize());
 
-        // Delete non-existing element
+        // Slet et ikke eksisterende element/node
         assertFalse(tree.delete(999));
         assertEquals(5, tree.getSize());
     }
