@@ -83,9 +83,8 @@ public class BST<E> implements Tree<E> {
         return new TreeNode<>(e);
     }
 
-    //BinaryTrees opgave01
+    //BinaryTrees opgave01-3
     @Override
-    /** Inorder traversal from the root */
     public void inorder() {
         inorder(root);
     }
@@ -98,9 +97,8 @@ public class BST<E> implements Tree<E> {
     }
 
 
-    //BinaryTrees opgave01
+    //BinaryTrees opgave01-3
     @Override
-    /** Postorder traversal from the root */
     public void postorder() {
         postorder(root);
     }
@@ -113,9 +111,8 @@ public class BST<E> implements Tree<E> {
     }
 
 
-    //BinaryTrees opgave01
+    //BinaryTrees opgave01-3
     @Override
-    /** Preorder traversal from the root */
     public void preorder() {
         preorder(root);
     }
@@ -218,15 +215,15 @@ public class BST<E> implements Tree<E> {
         if (root == null) return null;
         TreeNode<E> parent = null;
         TreeNode<E> current = root;
-        // Find the leftmost (minimum) node
+
         while (current.left != null) {
             parent = current;
             current = current.left;
         }
         E min = current.element;
-        // Remove the minimum node
+
         if (parent == null) {
-            // The root is the minimum
+
             root = root.right;
         } else {
             parent.left = current.right;
@@ -236,19 +233,19 @@ public class BST<E> implements Tree<E> {
     }
 
     //BinaryTreesFortsat opgave 2
-    public E removeMax(){
+    public E removeMax() {
         if (root == null) return null;
         TreeNode<E> parent = null;
         TreeNode<E> current = root;
-        // Find the leftmost (maximum) node
+
         while (current.right != null) {
             parent = current;
             current = current.right;
         }
         E max = current.element;
-        // Remove the maximum node
+
         if (parent == null) {
-            // The root is the minimum
+
             root = root.left;
         } else {
             parent.right = current.left;
@@ -346,10 +343,38 @@ public class BST<E> implements Tree<E> {
         return found; // Element deleted successfully
     }
 
-//
+    //BinaryTreesFortsat opgave 4
+    public int numberOfLeaves() {
+        return numberOfLeaves(root);
+    }
+    private int numberOfLeaves(TreeNode<E> node) {
+        if (node == null)
+            return 0;
+
+        // Hvis noden er et blad (ingen børn) returner 1
+        if (node.left == null && node.right == null)
+            return 1;
+
+        // Ellers fortsæt søgningen i både venstre og højre subtree
+        return numberOfLeaves(node.left) + numberOfLeaves(node.right);
+    }
+
+    //BinaryTreesFortsat opgave 4
+    public int heightNodeCount(int targetHeight) {
+        return heightNodeCount(root, 0, targetHeight);
+    }
+    private int heightNodeCount(TreeNode<E> node, int currentHeight, int targetHeight) {
+        if (node == null)
+            return 0;
+
+        // Hvis der nåes den ønskede højde, returner 1
+        if (currentHeight == targetHeight)
+            return 1;
+
+        // Ellers fortsæt rekursivt
+        return heightNodeCount(node.left, currentHeight + 1, targetHeight) +
+                heightNodeCount(node.right, currentHeight + 1, targetHeight);
+    }
+
     //-------------------------------------------------------------------
-
-
-
 }
-
